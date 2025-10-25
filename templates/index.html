@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Распознавание звёзд (OpenCV)</title>
+	<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Распознавание звёзд на зашумлённых снимках</h1>
+		<p>Загрузите изображение, настройте параметры и выполните распознавание.</p>
+
+		<form id="detectForm">
+			<div class="form-row">
+				<label for="image">Изображение</label>
+				<input type="file" id="image" name="image" accept="image/*" required />
+			</div>
+
+			<div class="grid">
+				<div class="form-row">
+					<label for="min_sigma">min_sigma</label>
+					<input type="number" step="0.1" id="min_sigma" name="min_sigma" value="1.0" />
+				</div>
+				<div class="form-row">
+					<label for="max_sigma">max_sigma</label>
+					<input type="number" step="0.1" id="max_sigma" name="max_sigma" value="8.0" />
+				</div>
+				<div class="form-row">
+					<label for="num_sigma">num_sigma</label>
+					<input type="number" step="1" id="num_sigma" name="num_sigma" value="7" />
+				</div>
+				<div class="form-row">
+					<label for="threshold">threshold</label>
+					<input type="number" step="0.01" id="threshold" name="threshold" value="0.03" />
+				</div>
+				<div class="form-row">
+					<label for="overlap">overlap</label>
+					<input type="number" step="0.05" id="overlap" name="overlap" value="0.5" />
+				</div>
+				<div class="form-row">
+					<label for="denoise_h">denoise_h</label>
+					<input type="number" step="1" id="denoise_h" name="denoise_h" value="7" />
+				</div>
+				<div class="form-row">
+					<label for="clahe_clip">clahe_clip</label>
+					<input type="number" step="0.1" id="clahe_clip" name="clahe_clip" value="3.0" />
+				</div>
+			</div>
+
+			<div class="form-row">
+				<button type="submit">Распознать</button>
+			</div>
+		</form>
+
+		<div class="panels">
+			<div class="panel">
+				<h3>Вход</h3>
+				<img id="inputPreview" alt="Предпросмотр" />
+			</div>
+			<div class="panel">
+				<h3>Результат</h3>
+				<div id="count"></div>
+				<img id="resultImage" alt="Результат" />
+			</div>
+		</div>
+	</div>
+
+	<script src="/static/js/app.js"></script>
+</body>
+</html>
+
